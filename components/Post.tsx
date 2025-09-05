@@ -25,6 +25,7 @@ type PostProps = {
     author: {
       _id: string;
       userName: string;
+      fullName: string;
       image: string;
     };
   };
@@ -82,6 +83,7 @@ export default function Post({ post }: PostProps) {
               transition={200}
               cachePolicy={"memory-disk"}
             />
+            <Text style={{color: COLORS.white, fontSize: 14, fontWeight: "600"}}>{post.author.fullName}</Text>
           </TouchableOpacity>
         </Link>
         {post.author._id === currentUser?._id ? (

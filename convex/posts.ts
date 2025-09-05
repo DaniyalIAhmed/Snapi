@@ -59,6 +59,7 @@ export const getFeedPosts = query({
           author: {
             _id: postAuthor?._id,
             userName: postAuthor?.userName,
+            fullName: postAuthor?.fullName,
             image: postAuthor?.image,
           },
           isLiked: !!likes,
@@ -196,7 +197,7 @@ export const deletePost = mutation({
       deleteRelated("likes"),
       deleteRelated("comments"),
       deleteRelated("bookmarks"),
-      // deleteRelated("notifications"), // enable if needed
+      deleteRelated("notifications"), // enable if needed
       ctx.storage.delete(post.storageId),
     ]);
 

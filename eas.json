@@ -12,6 +12,12 @@
       "distribution": "internal"
     },
     "production": {
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "${EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}",
+        "CONVEX_DEPLOYMENT": "${CONVEX_DEPLOYMENT}",
+        "EXPO_PUBLIC_CONVEX_URL": "${EXPO_PUBLIC_CONVEX_URL}",
+        "CLERK_JWT_ISSUER_DOMAIN": "${CLERK_JWT_ISSUER_DOMAIN}"
+      },
       "android": {
         "buildType": "apk"
       }

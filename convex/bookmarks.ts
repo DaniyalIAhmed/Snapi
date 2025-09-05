@@ -24,6 +24,7 @@ export const toggleBookmark = mutation({
     }
   },
 });
+
 export const getBookmarkedPosts = query({
   handler: async (ctx) => {
     const currentUser = await getAuthenticatedUser(ctx);
@@ -34,7 +35,9 @@ export const getBookmarkedPosts = query({
     const bookmarksWithInfo = await Promise.all(
       bookmarks.map(async (bookmark) => {
         const post = await ctx.db.get(bookmark.postId);
-        return post;
+        if(!post) return null;
+        const postAuthor = await ctx.db.get(post?.userId);
+        return {...post, author:{imageUrl: postAuthor?.image, fullName: postAuthor?.fullName}};
       })
     );
     return bookmarksWithInfo;
