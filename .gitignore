@@ -39,4 +39,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+app.config.ts
+
 app-example
