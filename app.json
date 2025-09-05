@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/ic_launcher_foreground.png",
         "backgroundColor": "#4ADE80"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.daniyal_ahmed_s.snapi"
     },
     "web": {
       "bundler": "metro",
@@ -31,12 +32,18 @@
           "image": "./assets/images/ic_launcher_foreground.png",
           "imageWidth": 200,
           "resizeMode": "cover",
-          "backgroundColor": "#4ADE80"
+          "backgroundColor": "#232323FF"
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "645498b8-ba29-4d0a-aad1-d7db057a4746"
+      }
     }
   }
 }
