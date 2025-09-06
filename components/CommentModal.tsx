@@ -6,14 +6,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQuery } from "convex/react";
 import React, { useState } from "react";
 import {
-    FlatList,
-    KeyboardAvoidingView,
-    Modal,
-    Platform,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  FlatList,
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import Comment from "./Comment";
 import Loader from "./Loader";
@@ -24,6 +24,8 @@ type CommentsModal = {
   onClose: () => void;
   onCommentAdded: () => void;
 };
+
+
 const CommentModal = ({
   postId,
   visible,

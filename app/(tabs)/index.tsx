@@ -8,6 +8,8 @@ import { styles } from "@/styles/feed.style";
 import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useQuery } from "convex/react";
+import { Link } from "expo-router";
+
 import {
   FlatList,
   ScrollView,
@@ -26,9 +28,13 @@ export default function Index() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>snapi</Text>
-        <TouchableOpacity onPress={() => signOut()}>
-          <Ionicons name="log-out-outline" size={24} color={COLORS.white} />
+        <Link href={"/message"} asChild>
+          {/* <TouchableOpacity onPress={() => signOut()}> */}
+          <TouchableOpacity onPress={() => {}}>
+          {/* <Ionicons name="log-out-outline" size={24} color={COLORS.white} /> */}
+          <Ionicons name="chatbubbles-outline" size={24} color={COLORS.white} />
         </TouchableOpacity>
+        </Link>
       </View>
       <FlatList
         data={feedPosts}

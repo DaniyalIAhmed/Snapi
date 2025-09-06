@@ -40,5 +40,6 @@ yarn-error.*
 *.tsbuildinfo
 
 app.config.ts
+eas.json
 
 app-example
