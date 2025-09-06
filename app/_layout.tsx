@@ -1,40 +1,41 @@
 import InitialLayout from "@/components/InitialLayout";
-import ConvexProvider from "@/providers/ConvexProvider";
+import ClerkAndConvexProvider from "@/providers/ConvexProvider";
 import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
+import * as NavigationBar from "expo-navigation-bar";
+import { SplashScreen } from "expo-router";
 import { useCallback, useEffect } from "react";
+import { Platform } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
+import { StatusBar } from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({
-    "JetBrainsMono-Medium": require("../assets/fonts/JetBrainsMono-Medium.ttf")
+  const [fontsLoaded] = useFonts({
+    "JetBrainsMono-Medium": require("../assets/fonts/JetBrainsMono-Medium.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
+    if (fontsLoaded) await SplashScreen.hideAsync();
+  }, [fontsLoaded]);
 
+  // update the native navigation bar on Android.
   useEffect(() => {
-    if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync();
+    if (Platform.OS === "android") {
+      NavigationBar.setBackgroundColorAsync("#000000");
+      NavigationBar.setButtonStyleAsync("light");
     }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
+  }, []);
 
   return (
-    <ConvexProvider>
+    <ClerkAndConvexProvider>
       <SafeAreaProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: "black" }} onLayout={onLayoutRootView}>
-          <InitialLayout/>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }} onLayout={onLayoutRootView}>
+          <InitialLayout />
         </SafeAreaView>
       </SafeAreaProvider>
-    </ConvexProvider>
+      <StatusBar style="light" />
+    </ClerkAndConvexProvider>
   );
 }

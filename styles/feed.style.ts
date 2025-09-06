@@ -198,12 +198,12 @@ export const styles = StyleSheet.create({
   input: {
     flex: 1,
     color: COLORS.white,
-    paddingVertical: 8,
+    paddingVertical:16,
     paddingHorizontal: 16,
     marginRight: 12,
     backgroundColor: COLORS.surface,
     borderRadius: 20,
-    fontSize: 14,
+    fontSize: 18,
   },
   postButton: {
     color: COLORS.primary,
